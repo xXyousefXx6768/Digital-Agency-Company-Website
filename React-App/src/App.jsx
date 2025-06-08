@@ -10,6 +10,7 @@ import ContactPage from './Pages/ContactPage'
 import ServicesPage from './Pages/ServicesPage'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import NavBar from './NavBar'
+import Footer from './Footer'
 
 
 function App() {
@@ -18,10 +19,7 @@ function App() {
   return (
    <main className="flex min-h-screen overflow-hidden bg-dark text-light flex-col">
      <NavBar />
-     <h1 className="text-3xl font-bold ">
-       Hello world!
-     </h1>
-
+     
      <Routes>
        <Route path="/" element={<HomePage />} />
        <Route path="/about" element={<AboutPage />} />
@@ -32,7 +30,7 @@ function App() {
        <Route path="/services" element={<ServicesPage />} />
      </Routes>
 
-
+     <Footer />
    </main>
   )
 }

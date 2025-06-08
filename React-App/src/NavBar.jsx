@@ -30,7 +30,7 @@ function NavBar() {
       }
   ]
   return (
-    <section className='flex justify-between items-center !p-2'>
+    <section className='flex  justify-between items-center !p-3'>
     <img src={logo} alt="logo" className='w-28 ' />
     <div className='flex gap-4'>
     {

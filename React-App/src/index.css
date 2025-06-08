@@ -2,6 +2,17 @@
 
 @tailwind utilities;
 
+@layer utilities{
+  .bg-dark-grid {
+    background-color: #0e0e0e;
+    background-image: url("/src/HomePageComponents/assets/download.png");
+    background-size: 28px 28px;
+    
+  }
+}
+
+
+
 @font-face{
   font-family: Barlow;
   src: url("./assets/fonts/Barlow-Light.ttf");
@@ -10,9 +21,18 @@
 }
 
 @theme{
-  --color-dark: #1E1E1E;
+  --color-dark: #000000;
   --color-light: #F1F1F1;
   --font-barlow: Barlow, sans-serif;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 *{
