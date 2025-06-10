@@ -12,7 +12,7 @@ function HeroSection() {
 
    useEffect(() => {
    const split = new window.SplitText(textRef.current, { type: "words" });
-
+   document.fonts.ready.then(() => {
     gsap.from(split.words, {
       duration: 3,
       opacity: 0,
@@ -29,6 +29,7 @@ function HeroSection() {
         ease: "power2.out",
       }
     );
+    });
     return () => split.revert();
   }, []);
   return (

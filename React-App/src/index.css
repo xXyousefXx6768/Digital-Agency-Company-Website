@@ -4,6 +4,7 @@
 
 @layer utilities{
   .bg-dark-grid {
+    
     background-color: #0e0e0e;
     background-image: url("/src/HomePageComponents/assets/download.png");
     background-size: 28px 28px;
