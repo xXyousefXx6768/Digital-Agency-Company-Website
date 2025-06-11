@@ -122,7 +122,7 @@ function OurServicesSection() {
             <div
             ref={el => cardsRef.current[idx] = el}
               key={idx}
-              className="bg-[#1e1e1e95] h-[600px] !p-6 text-left shadow-lg flex flex-col justify-evenly "
+              className="bg-[#1e1e1e95] h-[524px] !p-6 text-left shadow-lg flex flex-col justify-evenly "
             >
               <div className="bg-[#262626] icon rounded-xl w-[58px] !p-4 opacity-0 shadow-inner">
                  <img src={service.icon} alt={service.title} className="h-6 w-6 object-contain" />
