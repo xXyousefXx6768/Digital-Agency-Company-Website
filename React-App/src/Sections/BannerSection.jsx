@@ -3,7 +3,7 @@ import React from 'react'
 function BannerSection({image,title,Desc}) {
   return (
     <div className="w-full bg-black text-white !py-16 relative">
-                <div className="absolute inset-0 bg-[#ACFF24] opacity-20 mix-blend-hard-light pointer-events-none z-0" >
+                <div className="absolute inset-0 bg-[#d7efaf] opacity-20 mix-blend-hard-light pointer-events-none z-0" >
                     <img src={image} alt="bg" className="w-full h-full object-cover opacity-30" />
                 </div>
                  <div className="relative z-10 max-w-7xl !mx-auto !px-7 text-center">

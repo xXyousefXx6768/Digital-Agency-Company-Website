@@ -117,14 +117,19 @@ function OurServicesSection() {
           </div> */}
           {/* end of it */}
           <div ref={sectionRef} 
-          className="grid  grid-cols-1 items-center  relative bottom-[40px]  md:grid-cols-3 ">
+          className="grid  grid-cols-1 items-center  relative bottom-[32px]  md:grid-cols-3 ">
                   {ServicesItems.map((service, idx) => (
             <div
             ref={el => cardsRef.current[idx] = el}
               key={idx}
               className="bg-[#1e1e1e95] h-[524px] !p-6 text-left shadow-lg flex flex-col justify-evenly "
             >
-              <div className="bg-[#262626] icon rounded-xl w-[58px] !p-4 opacity-0 shadow-inner">
+              <div className="relative rounded-xl w-[58px] 
+             h-[58px] !p-4 overflow-hidden icon opacity-0 bg-[#1e1e1e]">
+                <div 
+            className="absolute inset-0 bg-gradient-to-b 
+           from-[#9eff00] to-transparent opacity-10 z-0">
+                </div>
                  <img src={service.icon} alt={service.title} className="h-6 w-6 object-contain" />
                 </div>
 
