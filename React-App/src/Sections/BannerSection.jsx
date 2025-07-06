@@ -1,6 +1,7 @@
 import React from 'react'
 
-function BannerSection({image,title,Desc}) {
+
+function BannerSection({image,title,Desc,logo,btn}) {
   return (
     <div className="w-full bg-black text-white !py-16 relative">
                 <div className="absolute inset-0 bg-[#d7efaf] opacity-20 mix-blend-hard-light pointer-events-none z-0" >

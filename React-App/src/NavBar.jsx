@@ -13,20 +13,8 @@ function NavBar() {
          path:'/services'
       },
       {
-        name:'Works',
-        path:'/works'
-      },
-      {
-        name:'process',
-        path:'/process'
-      },
-      {
         name:'About',
         path:'/about'
-      },
-      {
-        name:'Carrers',
-        path:'/careers'
       }
   ]
   return (
