@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 function BannerSection({image,title,Desc,logo,btn}) {
   return (
     <div className="w-full bg-black text-white !py-16 relative">
