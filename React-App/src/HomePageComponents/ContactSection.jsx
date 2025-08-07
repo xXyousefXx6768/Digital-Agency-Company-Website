@@ -13,13 +13,17 @@ function ContactSection() {
       Here are the different ways you can get in touch with us.'
       image={continerBg}               
       />
-      <section className='w-full flex justify-center !mt-8  gap-4 '>
-          <div className='w-1/2 '>
+      <section className='w-full  flex justify-center !mt-8 !p-7 gap-4 '>
+          <div className='w-1/2  !border border-[#4f4e4e] !rounded-[10px]'>
           <form className="w-full !p-10 flex flex-col gap-8">
 
   {/* Full Name & Email */}
   <div className="flex gap-6 ">
-    <div className="w-1/2 bg-[#262626]">
+    <div className="w-1/2 bg-[#262626] 
+    !rounded-[10px] !border border-[#4f4e4e] !p-3  ">
+      <label htmlFor="email">
+     email
+     </label>
       <input
         type="text"
         placeholder="Full Name"
@@ -29,10 +33,15 @@ function ContactSection() {
         focus:ring-0 focus:outline-none transition-all duration-300"
       />
     </div>
-    <div className="w-1/2 bg-[#262626]">
+    <div className="w-1/2 bg-[#262626] 
+    !rounded-[10px] !border 
+    border-[#4f4e4e] !p-3">
+     <label htmlFor="email">
+     email
+     </label>
       <input
         type="email"
-        placeholder="Email"
+        placeholder="type here"
         className="w-full bg-transparent text-white placeholder-white/60 
         text-[16px] !px-1 !py-3 !border-0 !border-b border-gray-600 focus:border-lime-400 
         focus:ring-0 focus:outline-none transition-all duration-300"
@@ -41,8 +50,8 @@ function ContactSection() {
   </div>
 
   {/* Checkboxes */}
-  <div className="bg-[#262626] !px-6 !py-5 rounded-[10px] !border
-   !border-[#333333] text-white shadow-md">
+  <div className="bg-[#262626] !px-6 !py-5 rounded-[10px] 
+    !border border-[#4f4e4e] text-white shadow-md">
     <p className="!mb-4 text-[16px] font-semibold">
       Why are you contacting us?
       </p>
@@ -63,8 +72,7 @@ function ContactSection() {
   </div>
 
   {/* Budget Slider */}
-  <div className="bg-[#262626] !px-6 !py-5 !rounded-[10px] !border
-   !border-[#333333] text-white shadow-md">
+  <div className="bg-[#262626] !px-6 !py-5 !rounded-[10px] !border border-[#4f4e4e] text-white shadow-md">
     <p className="!mb-4 text-[16px] font-semibold">Your Budget</p>
     <input
       type="range"
