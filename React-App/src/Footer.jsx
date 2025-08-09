@@ -64,7 +64,7 @@ function Footer() {
     <footer 
     className=" text-white   !py-10 !px-6 ">
       <div 
-      className="max-w-7xl mx-auto flex 
+      className="w-full mx-auto flex 
       flex-col md:flex-row justify-between 
       items-center gap-10 border-b border-gray-700 !pb-10">
        

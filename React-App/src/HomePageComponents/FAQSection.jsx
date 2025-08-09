@@ -12,7 +12,6 @@ function FAQSection() {
     Desc='Discover the answers to frequently asked 
     questions about our services and solutions.'/>
     <AccordionSection />
-    
    </section>
   )
 }

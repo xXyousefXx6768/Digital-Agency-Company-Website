@@ -1,9 +1,15 @@
 import React from 'react'
-import BannerSection from '../Sections/BannerSection'
+import ContactUsComponent from '../ContactPageComponents/ContactUsComponent'
+import ContactInfoComponent from '../ContactPageComponents/ContactInfoComponent'
+import FreqAsked from '../ContactPageComponents/FreqAsked'
+import StartProjectSection from '../Sections/StartProjectSection'
 function ContactPage() {
   return (
-    <section>
-    <BannerSection title='Contact' Desc='Get in touch with us'/><br/><br/>
+    <section className='flex flex-col  justify-center items-center'>
+      <ContactUsComponent />
+      <ContactInfoComponent />
+      <FreqAsked />
+      <StartProjectSection />
     </section>
   )
 }

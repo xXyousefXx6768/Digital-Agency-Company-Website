@@ -79,8 +79,9 @@ function OurStory() {
     
   }, []);
   return (
-    <div className='flex justify-evenly items-center !p-3 flex-wrap parent bg-[#1e1e1e95]   '  >
-        <div className='w-[35%]'>
+    <div className=' parent bg-[#1e1e1e95]   '  >
+       <div className='flex justify-evenly  !mt-15 items-center !p-3  flex-wrap'>
+        <div className='w-[35%] '>
           <h4 className='!mb-4 text-2xl  font-bold'>
             About SquareUp
           </h4>
@@ -161,6 +162,8 @@ function OurStory() {
       />
                 
           </section>
+
+       </div>
     </div>
   )
 }
