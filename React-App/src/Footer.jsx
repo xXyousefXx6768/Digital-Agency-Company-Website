@@ -62,7 +62,7 @@ function Footer() {
   ]
   return (
     <footer 
-    className=" text-white   !py-10 !px-6 ">
+    className=" text-white font-barlow  !py-10 !px-6 ">
       <div 
       className="w-full mx-auto flex 
       flex-col md:flex-row justify-between 
