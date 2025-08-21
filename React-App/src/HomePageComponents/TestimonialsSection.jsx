@@ -14,101 +14,80 @@ gsap.registerPlugin(ScrollTrigger);
 
 function TestimonialsSection() {
   const containerRef = useRef(null);
+  const progressRef = useRef(null);
 
-  const testimonials = [
-    {
-      name: "John Smith",
-      title: "CEO of Chic Boutique",
-      text: "SquareUp has been instrumental in transforming our online presence...",
-      image: Profile,
-    },
-    {
-      name: "Sarah Johnson",
-      title: "Founder of HungryBites",
-      text: "Working with SquareUp was a breeze...",
-      image: Profile1,
-    },
-    {
-      name: "Mark Thompson",
-      title: "CEO of EventMasters",
-      text: "SquareUp developed a comprehensive booking and reservation system...",
-      image: Profile2,
-    },
-    {
-      name: "Laura Adams",
-      title: "COO of ProTech Solutions",
-      text: "ProTech Solutions turned to SquareUp to automate our workflow...",
-      image: Profile3,
-    },
-    {
-      name: "Michael Anderson",
-      title: "Founder of Dream Homes Realty.",
-      text: "SquareUp designed and developed a captivating web portal...",
-      image: Profile4,
-    },
-    {
-      name: "Emily Turner",
-      title: "CEO of FitLife Tracker",
-      text: "FitLife Tracker wanted a mobile app that tracked fitness activities...",
-      image: Profile5,
-    },
-  ];
+  const testimonials = [ 
+    { name: "John Smith", title: "CEO of Chic Boutique", text: "SquareUp has been instrumental in transforming our online presence...", image: Profile, }, 
+    { name: "Sarah Johnson", title: "Founder of HungryBites", text: "Working with SquareUp was a breeze...", image: Profile1, }, 
+    { name: "Mark Thompson", title: "CEO of EventMasters", text: "SquareUp developed a comprehensive booking and reservation system...", image: Profile2, }, 
+    { name: "Laura Adams", title: "COO of ProTech Solutions", text: "ProTech Solutions turned to SquareUp to automate our workflow...", image: Profile3, }, 
+    { name: "Michael Anderson", title: "Founder of Dream Homes Realty.", text: "SquareUp designed and developed a captivating web portal...", image: Profile4, }, 
+    { name: "Emily Turner", title: "CEO of FitLife Tracker", text: "FitLife Tracker wanted a mobile app that tracked fitness activities...", image: Profile5, }, ];
 
- useEffect(() => {
-  const cards = gsap.utils.toArray(".testimonial-card");
+  useEffect(() => {
+    const cards = gsap.utils.toArray(".testimonial-card");
 
-  const ctx = gsap.context(() => {
-    gsap.set(cards, {
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      xPercent: -50,
-      yPercent: -50,
-      opacity: 0,
-      filter: "blur(10px)",
-      zIndex: 1,
-    });
-
-    // أول كارت ظاهر
-    gsap.set(cards[0], { opacity: 1, filter: "blur(0px)", zIndex: 2 });
-
-    // Timeline رئيسي لكل الكروت
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: () => `+=${cards.length * 800}`,
-        pin: true,
-        scrub: true,
-      },
-    });
-
-    // ضيف الانتقالات لكل كارت
-    cards.forEach((card, i) => {
-      if (i === cards.length - 1) return;
-
-      tl.to(cards[i], {
+    const ctx = gsap.context(() => {
+      // تجهيز الكروت
+      gsap.set(cards, {
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        xPercent: -50,
+        yPercent: -50,
         opacity: 0,
         filter: "blur(10px)",
-        y: -100,
         zIndex: 1,
-      })
-        .to(
-          cards[i + 1],
-          {
-            opacity: 1,
-            filter: "blur(0px)",
-            y: 0,
-            zIndex: 2,
-          },
-          "<" // في نفس الوقت
-        )
-        .addPause(); // يوقف لحد ما المستخدم يسكورل تاني
-    });
-  });
+      });
 
-  return () => ctx.revert();
-}, []);
+      // أول كارت ظاهر
+      gsap.set(cards[0], { opacity: 1, filter: "blur(0px)", zIndex: 2 });
+
+      // Timeline رئيسي لكل الكروت
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: () => `+=${cards.length * 800}`,
+          pin: true,
+          scrub: true,
+          onUpdate: (self) => {
+            // تحديث البروجريس بار
+            gsap.to(progressRef.current, {
+              scaleX: self.progress, // self.progress من 0 -> 1
+              transformOrigin: "left center",
+              ease: "none",
+            });
+          },
+        },
+      });
+
+      // الانتقالات بين الكروت
+      cards.forEach((card, i) => {
+        if (i === cards.length - 1) return;
+
+        tl.to(cards[i], {
+          opacity: 0,
+          filter: "blur(10px)",
+          y: -100,
+          zIndex: 1,
+        })
+          .to(
+            cards[i + 1],
+            {
+              opacity: 1,
+              filter: "blur(0px)",
+              y: 0,
+              zIndex: 2,
+            },
+            "<"
+          )
+          .addPause();
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section className="w-full bg-[#1e1e1e95] relative bottom-22">
@@ -148,6 +127,14 @@ function TestimonialsSection() {
             </div>
           </div>
         ))}
+
+        {/* Scroll Progress Bar */}
+        <div className="absolute bottom-6 left-0 w-full h-2 bg-[#333] rounded-full overflow-hidden">
+          <div
+            ref={progressRef}
+            className="h-full bg-[#D8FF99] rounded-full scale-x-0"
+          />
+        </div>
       </div>
     </section>
   );
