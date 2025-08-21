@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import logo from './assets/logo.png'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faBars} from '@fortawesome/free-solid-svg-icons'
 
 function NavBar() {
   const NavItems=[
@@ -18,9 +20,9 @@ function NavBar() {
       }
   ]
   return (
-    <section className='flex  justify-between bg-[#1e1e1e95] items-center !p-3'>
+    <section className='flex  justify-between bg-[#1e1e1e95]  items-center !p-3'>
     <img src={logo} alt="logo" className='w-28 ' />
-    <div className='flex gap-4'>
+    <div className=' lg:flex  sm:hidden   gap-4 '>
     {
       NavItems.map((item,index)=>{
         return(
@@ -31,9 +33,12 @@ function NavBar() {
       })
     }
     </div>
-    <div className=' bg-[#9EFF00]  font-barlow font-semibold text-[#262626] !p-3 !rounded-md'>
+    <div className=' bg-[#9EFF00] lg:flex  sm:hidden font-barlow font-semibold text-[#262626] !p-3 !rounded-md'>
      <Link to="/contact">
       Contact Us</Link>
+    </div>
+    <div className=' lg:hidden  sm:flex '>
+    <FontAwesomeIcon icon={faBars} className='text-[#9EFF00] '/>
     </div>
     </section>
   )

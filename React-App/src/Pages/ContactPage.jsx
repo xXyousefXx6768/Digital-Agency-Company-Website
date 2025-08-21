@@ -5,7 +5,7 @@ import FreqAsked from '../ContactPageComponents/FreqAsked'
 import StartProjectSection from '../Sections/StartProjectSection'
 function ContactPage() {
   return (
-    <section className='flex flex-col  justify-center items-center'>
+    <section className='flex flex-col font-barlow justify-center items-center'>
       <ContactUsComponent />
       <ContactInfoComponent />
       <FreqAsked />

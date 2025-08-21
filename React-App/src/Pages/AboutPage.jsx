@@ -6,7 +6,7 @@ import CTASection from '../AboutUsComponents/CTASection'
 import OurStory from '../AboutUsComponents/OurStory'
 function AboutPage() {
   return (
-     <section className='flex flex-col  justify-center items-center'>
+     <section className='flex flex-col font-barlow  justify-center items-center'>
       <AboutSquareUp/>
       <OurStory/>
       <CTASection/>
