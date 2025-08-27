@@ -41,3 +41,25 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.overlay {
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* تبدأ من فوق */
+  will-change: transform;
+}
+.menu-item {
+  will-change: transform;
+}
+.ll {
+  will-change: transform;
+  line-height: 80%;
+}
+.menu-item .ll::after {
+  content: "";
+  position: absolute;
+  top: 60%;
+  left: 0;
+  transform: translateY(-50%);
+  background-color: #9EFF00;
+  width: 0;
+  height: 2px;
+}

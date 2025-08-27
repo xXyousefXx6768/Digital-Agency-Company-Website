@@ -6,9 +6,12 @@ import TestimonialsSection from '../HomePageComponents/TestimonialsSection'
 import FAQSection from '../HomePageComponents/FAQSection'
 import ContactSection from '../HomePageComponents/ContactSection'
 
+
 function HomePage() {
+
   return (
     <section className='flex flex-col font-barlow  justify-center items-center'>
+     
       <HeroSection />
       <OurServicesSection />
       <WhyChooseUsSection />
