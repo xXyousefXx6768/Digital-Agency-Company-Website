@@ -130,7 +130,7 @@ function OurServicesSection() {
             className="absolute inset-0 bg-gradient-to-b 
            from-[#9eff00] to-transparent opacity-10 z-0">
                 </div>
-                 <img src={service.icon} alt={service.title} className="h-6 w-6 object-contain" />
+                 <img loading='lazy' src={service.icon} alt={service.title} className="h-6 w-6 object-contain" />
                 </div>
 
               <h3 className="text-xl opacity-0 font-semibold title ">{service.title}</h3>

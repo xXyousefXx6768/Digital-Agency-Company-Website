@@ -3,8 +3,8 @@ import React from 'react'
 function MapMarkerIcon() {
   return (
     <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" 
-clip-rule="evenodd" 
+<path fillRule="evenodd" 
+clipRule="evenodd" 
 d="M11.5397 22.851C11.57 
 22.8685 11.5937 22.8821 
 11.6105 22.8915L11.6384 

@@ -100,16 +100,16 @@ function TestimonialsSection() {
       {/* container for stacked cards */}
       <div
         ref={containerRef}
-        className="relative h-screen flex items-center justify-center"
+        className="relative h-screen flex  md:!p-2 sm:!p-2 items-center justify-center"
       >
         {testimonials.map((t, i) => (
           <div
             key={i}
-            className="testimonial-card w-1/2 h-[400px] bg-[#262626] !p-6 rounded-2xl shadow-md text-center"
+            className="testimonial-card lg:w-1/2 h-[400px] md:w-2/3 sm:w-full  bg-[#262626] !p-6 rounded-2xl shadow-md text-center"
           >
             <h4 className="font-bold text-[#D8FF99] !mb-6 text-2xl">{t.title}</h4>
             <p className="text-white !mb-4">{t.text}</p>
-            <div className="flex items-center justify-between bg-[#303030] !p-4 rounded-xl">
+            <div className="flex lg:flex-row sm:flex-col items-center  justify-between bg-[#303030] !p-4 rounded-xl">
               <div className="flex items-center">
                 <img
                   src={t.image}

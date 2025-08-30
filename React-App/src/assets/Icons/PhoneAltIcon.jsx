@@ -3,8 +3,8 @@ import React from 'react'
 function PhoneAltIcon() {
   return (
     <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" 
-clip-rule="evenodd" 
+<path fillRule="evenodd" 
+clipRule="evenodd" 
 d="M1.5 5C1.5 3.34315 2.84315 2 4.5 
 2H5.87163C6.732 2 7.48197 2.58556 
 7.69064 3.42025L8.79644 7.84343C8.97941 

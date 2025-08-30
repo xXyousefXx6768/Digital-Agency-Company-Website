@@ -71,7 +71,7 @@ function Footer() {
         {/* Left Section */}
         <div className="flex flex-col gap-4 max-w-sm">
           <div className="flex  items-center gap-2">
-            <img src={logo} className="w-36" alt="logo" />
+            <img loading='lazy' src={logo} className="w-36" alt="logo" />
           </div>
         </div>
 
@@ -92,7 +92,7 @@ function Footer() {
           <span className="font-semibold text-sm">Stay Connected</span>
           <div className="flex  gap-3">
             {SocialIcons.map((icon, index) => (
-              <Link key={index} to={'#'} 
+              <Link  loading='lazy' key={index} to={'#'} 
               className="hover:text-lime-400">
                 {icon.icon}
               </Link>

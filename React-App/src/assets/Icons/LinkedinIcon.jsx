@@ -4,7 +4,7 @@ function LinkedinIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" 
       xmlns="http://www.w3.org/2000/svg">
-       <g clip-path="url(#clip0_39_218)">
+       <g clipPath="url(#clip0_39_218)">
          <path d="M22.2234 0H1.77187C0.792187 0 0 0.773438 0 
          1.72969V22.2656C0 23.2219 0.792187 24 1.77187 24H22.2234C23.2031 
          24 24 23.2219 24 22.2703V1.72969C24 0.773438 23.2031 0 22.2234 

@@ -3,7 +3,7 @@ import React from 'react'
 function FacebookIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-     <g clip-path="url(#clip0_39_212)">
+     <g clipPath="url(#clip0_39_212)">
        <path d="M24 12C24 5.37258 18.6274 0 12 
       0C5.37258 0 0 5.37258 0 12C0 17.9895 
       4.3882 22.954 10.125 23.8542V15.4687H7.07812V12H10.125V9.35625C10.125 

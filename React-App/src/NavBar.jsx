@@ -26,7 +26,7 @@ function NavBar() {
   return (
     <>
     <section className='flex  justify-between bg-[#1e1e1e95]  items-center !p-3'>
-    <img src={logo} alt="logo" className='w-28 ' />
+    <img src={logo} loading='lazy' alt="logo" className='w-28 ' />
     <div className=' lg:flex  sm:hidden   gap-4 '>
     {
       NavItems.map((item,index)=>{

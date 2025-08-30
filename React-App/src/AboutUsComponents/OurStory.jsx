@@ -77,15 +77,15 @@ function OurStory() {
 
     // Icon
     
-  }, []);
+  }, [containerRef, bgRef, line1Ref, line2Ref, line3Ref, iconRef]);
   return (
     <div className=' parent bg-[#1e1e1e95]   '  >
-       <div className='flex justify-evenly  !mt-15 items-center !p-3  flex-wrap'>
-        <div className='w-[35%] '>
-          <h4 className='!mb-4 text-2xl  font-bold'>
+       <div className='flex justify-evenly  md:flex-row flex-col  !mt-15 items-center !p-3  '>
+        <div className='w-10/12 lg:w-1/3 sm:text-center lg:text-start md:text-start h-100 flex flex-col  lg:justify-center md:justify-center md:w-2/3 '>
+          <h4 className='!mb-2 text-2xl  font-bold'>
             About SquareUp
           </h4>
-          <p>
+          <p className='h-36 '>
             SquareUp is a digital product agency that is passionate about crafting exceptional digital experiences. 
             We specialize in design, engineering, and project management, 
             helping businesses thrive in the digital landscape. At SquareUp, 
@@ -98,7 +98,7 @@ function OurStory() {
           {/*box section */}
           <section 
           ref={containerRef}
-          className="relative w-[340px] h-[300px]  ">
+          className="relative w-[340px] !mt-8 h-[300px]  ">
           {/* Background */}
       <img
         ref={bgRef}

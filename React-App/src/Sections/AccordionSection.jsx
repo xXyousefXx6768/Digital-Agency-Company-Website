@@ -55,7 +55,7 @@ function AccordionSection() {
   ];
 
   return (
-    <div className="grid grid-cols-2 gap-4 w-full items-center  !px-4 !py-10">
+    <div className="grid lg:grid-cols-2  sm:grid-cols-1 gap-4 w-full items-center  !px-4 !py-10">
       {faqData.map((item) => {
         const isActive = activeId === item.id;
 

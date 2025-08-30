@@ -11,15 +11,20 @@ function HeroSection() {
 
 
    useEffect(() => {
-   const split = new window.SplitText(textRef.current, { type: "words" });
-   document.fonts.ready.then(() => {
+  let split;
+
+  document.fonts.ready.then(() => {
+    // اعمل SplitText بعد ما الفونت يجهز
+    split = new window.SplitText(textRef.current, { type: "words" });
+
     gsap.from(split.words, {
       duration: 3,
       opacity: 0,
       y: 90,
       stagger: 0.1,
-      ease: "power4.out"
+      ease: "power4.out",
     });
+
     gsap.fromTo(
       svgRef.current,
       { scaleY: 0.1, transformOrigin: "bottom center" },
@@ -29,9 +34,13 @@ function HeroSection() {
         ease: "power2.out",
       }
     );
-    });
-    return () => split.revert();
-  }, []);
+  });
+
+  return () => {
+    if (split) split.revert();
+  };
+}, []);
+
   return (
     <section className=" relative bg-dark-grid min-h-screen w-full text-white flex items-center justify-center !px-4">
       <div className="absolute   bottom-0 w-ful h-[80%] z-0 overflow-hidden pointer-events-none">

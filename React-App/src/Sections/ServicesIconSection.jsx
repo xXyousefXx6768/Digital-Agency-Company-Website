@@ -12,7 +12,7 @@ function ServicesIconSection({ items }) {
               className="absolute inset-0 bg-gradient-to-br from-[#aeff0c] to-transparent opacity-10 z-0"
             ></div>
             <Link to={"#"} className="hover:text-lime-400 relative z-10">
-              <img src={item.icon} alt={item.title} />
+              <img loading="lazy" src={item.icon} alt={item.title} />
             </Link>
           </div>
           <p className="!p-3 !mt-2 ">{item.title}</p>
