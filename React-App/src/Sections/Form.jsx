@@ -3,11 +3,11 @@ import React from 'react'
 function Form() {
   return (
    <section className='w-full  flex justify-center !mt-8 !p-7 gap-4 '>
-          <div className='w-1/2  !border border-[#4f4e4e] !rounded-[10px]'>
+          <div className='lg:w-1/2   !border border-[#4f4e4e] !rounded-[10px]'>
           <form className="w-full !p-10 flex flex-col gap-8">
 
   {/* Full Name & Email */}
-  <div className="flex gap-6 ">
+  <div className="flex lg:flex-row md:flex-col gap-6 md:justify-center ">
     <div className="w-1/2 bg-[#262626] 
     !rounded-[10px] !border border-[#4f4e4e] !p-3  ">
       <label htmlFor="email">
@@ -61,7 +61,7 @@ function Form() {
   </div>
 
   {/* Budget Slider */}
-  <div className="bg-[#262626] !px-6 !py-5 !rounded-[10px] !border border-[#4f4e4e] text-white shadow-md">
+  <div className="bg-[#262626] !px-6 !py-5  !rounded-[10px] !border border-[#4f4e4e] text-white shadow-md">
     <p className="!mb-4 text-[16px] font-semibold">Your Budget</p>
     <input
       type="range"

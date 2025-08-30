@@ -42,7 +42,7 @@ export default function ResponsiveNav() {
       duration: 2.9,
       width: '100%',
       ease: 'power4.out',
-      delay: 0.1
+      delay: 2.
     }, '<');
 
   }, []); // يتعمل مرة واحدة بس

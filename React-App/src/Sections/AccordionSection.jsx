@@ -70,7 +70,7 @@ function AccordionSection() {
         return (
           <div
             key={item.id}
-            className="  border border-[#312f2f40] !p-4 transition-all duration-300"
+            className="  border border-[#312f2f40] !p-4  transition-all duration-300"
           >
             <div
               className="flex items-start justify-between cursor-pointer"
@@ -78,8 +78,8 @@ function AccordionSection() {
             >
               <div className="flex items-start gap-4">
                 <div className="relative rounded-xl w-[58px] h-[58px] flex items-center justify-center bg-[#1e1e1e] overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#b6bbab] via-[#666863] to-[#87997c] opacity-25 z-0" />
-                  <span className={`relative z-10 ${isActive ? 'text-[#99FF00]' : 'text-white'} text-lg md:text-xl font-extrabold`}>
+                  <div className="absolute w-[58px] inset-0 bg-gradient-to-br from-[#b6bbab] via-[#666863] to-[#87997c] opacity-25 z-0" />
+                  <span className={`relative z-10 ${isActive ? 'text-[#99FF00]' : 'text-white'} text-lg  md:text-xl font-extrabold`}>
                     {String(item.id).padStart(2, '0')}
                   </span>
                 </div>

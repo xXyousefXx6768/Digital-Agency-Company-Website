@@ -102,13 +102,13 @@ function Footer() {
       </div>
 
       {/* Bottom Text */}
-      <div className="text-center flex justify-between  !pt-6">
+      <div className="text-center flex lg:flex-row sm:flex-col md:flex-row justify-between  !pt-6">
 
-       <div className='flex gap-2'> 
+       <div className='flex lg:flex-row md:flex-row items-center sm:flex-col gap-2'> 
           {
             ContactIcons.map((item, index) => (
               <div key={index} 
-              className="flex items-center gap-2 text-sm text-gray-300">
+              className="flex  items-center gap-2 text-sm text-gray-300">
                 {item.icon}
                 <span>hello@squareup.com</span>
               </div>

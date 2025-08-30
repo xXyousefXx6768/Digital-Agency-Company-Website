@@ -42,7 +42,7 @@ function CTASection() {
       <h4 className='text-6xl !p-5 !ml-7 !mt-20'>
        Our Story
       </h4>
-    <div className='grid grid-cols-2 gap-4 w-full items-center '>
+    <div className='grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-1 gap-4 w-full items-center '>
       {
         ctaSectionelements.map((item,index)=>
           <div key={index} className=' !p-4'>
