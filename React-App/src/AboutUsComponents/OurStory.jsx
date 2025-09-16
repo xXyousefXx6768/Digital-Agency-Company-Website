@@ -1,13 +1,14 @@
 import React from 'react'
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Logo from '../AboutPageComponents/assets/Logo.png'
 import boxBg from '../AboutPageComponents/assets/Image.png'
 import Line2 from '../AboutPageComponents/assets/Line 2.png'
 import LineSvg from '../AboutPageComponents/assets/lineSvg';
 
 
-
+gsap.registerPlugin(ScrollTrigger);
 function OurStory() {
   const containerRef = useRef(null);
   const bgRef = useRef(null);
@@ -17,7 +18,13 @@ function OurStory() {
   const iconRef = useRef(null);
 
    useEffect(() => {
-    const tl = gsap.timeline({ delay: 0.2 });
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top center",
+      },
+       delay: 0.2,
+      });
 
     // Background
     tl.fromTo(

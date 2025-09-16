@@ -42,7 +42,8 @@ export default function ResponsiveNav() {
       duration: 2.9,
       width: '100%',
       ease: 'power4.out',
-      delay: 2.
+      delay: 1.8,
+
     }, '<');
 
   }, []); // يتعمل مرة واحدة بس
@@ -73,7 +74,7 @@ export default function ResponsiveNav() {
       NavItems.map((item, index) => (
         <div className='menu-item !p-1 cursor-pointer overflow-hidden' key={index}>
           <Link
-            className='text-amber-50 font-barlow ll hover:text-lime-400  hover:tracking-wider text-9xl block'
+            className='text-amber-50 font-barlow ll hover:text-lime-400  hover:tracking-wider lg:text-9xl md:text-8xl sm:text-7xl block'
             to={item.path}
             onClick={handleClose}
           >
