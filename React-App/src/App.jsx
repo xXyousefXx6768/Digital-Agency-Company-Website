@@ -16,6 +16,7 @@ import ResponsiveNav from './ResponsiveSections/ResponsiveNav.jsx'
 
 function App() {
   const {isOpen,setIsOpen}=useContext(NavBarStatusContext)
+  useLenis()
   return (
     
    <main id="app-container" className="flex min-h-screen overflow-hidden bg-dark text-light flex-col">

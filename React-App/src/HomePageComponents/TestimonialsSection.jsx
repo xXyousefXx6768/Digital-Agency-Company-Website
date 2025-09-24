@@ -17,12 +17,18 @@ function TestimonialsSection() {
   const progressRef = useRef(null);
 
   const testimonials = [ 
-    { name: "John Smith", title: "CEO of Chic Boutique", text: "SquareUp has been instrumental in transforming our online presence...", image: Profile, }, 
-    { name: "Sarah Johnson", title: "Founder of HungryBites", text: "Working with SquareUp was a breeze...", image: Profile1, }, 
-    { name: "Mark Thompson", title: "CEO of EventMasters", text: "SquareUp developed a comprehensive booking and reservation system...", image: Profile2, }, 
-    { name: "Laura Adams", title: "COO of ProTech Solutions", text: "ProTech Solutions turned to SquareUp to automate our workflow...", image: Profile3, }, 
-    { name: "Michael Anderson", title: "Founder of Dream Homes Realty.", text: "SquareUp designed and developed a captivating web portal...", image: Profile4, }, 
-    { name: "Emily Turner", title: "CEO of FitLife Tracker", text: "FitLife Tracker wanted a mobile app that tracked fitness activities...", image: Profile5, }, ];
+    { name: "John Smith", title: "CEO of Chic Boutique", 
+      text: "SquareUp has been instrumental in transforming our online presence. Their team's expertise in web development and design resulted in a visually stunning and user-friendly e-commerce platform. Our online sales have skyrocketed, and we couldn’t be happier.", image: Profile, }, 
+    { name: "Sarah Johnson", title: "Founder of HungryBites", 
+      text: "Working with SquareUp was a breeze. They understood our vision for a mobile app that streamlined our food delivery service. The app they delivered exceeded our expectations, and our customers love the seamless ordering experience.", image: Profile1, }, 
+    { name: "Mark Thompson", title: "CEO of EventMasters", 
+      text: "SquareUp developed a comprehensive booking and reservation system for our event management company. Their attention to detail and commitment to delivering a user-friendly platform was evident throughout the project.", image: Profile2, }, 
+    { name: "Laura Adams", title: "COO of ProTech Solutions", 
+      text: "ProTech Solutions turned to SquareUp to automate our workflow. They delivered an exceptional custom software solution. The system has significantly increased our productivity and reduced manual errors.", image: Profile3, }, 
+    { name: "Michael Anderson", title: "Founder of Dream Homes Realty.", 
+      text: "SSquareUp designed and developed a captivating web portal for showcasing our real estate listings.", image: Profile4, }, 
+    { name: "Emily Turner", title: "CEO of FitLife Tracker", 
+      text: "FitLife Tracker wanted a mobile app that tracked fitness activities and provided personalized workout plans.", image: Profile5, }, ];
 
   useEffect(() => {
     const cards = gsap.utils.toArray(".testimonial-card");
@@ -105,11 +111,11 @@ function TestimonialsSection() {
         {testimonials.map((t, i) => (
           <div
             key={i}
-            className="testimonial-card lg:w-1/2 h-[400px] md:w-2/3 sm:w-full  bg-[#262626] !p-6 rounded-2xl shadow-md text-center"
+            className="testimonial-card lg:w-1/2 lg:h-[400px] h-[520px] md:w-2/3 sm:w-full  bg-[#262626] !p-6 rounded-2xl shadow-md text-center"
           >
             <h4 className="font-bold text-[#D8FF99] !mb-6 text-2xl">{t.title}</h4>
             <p className="text-white !mb-4">{t.text}</p>
-            <div className="flex lg:flex-row sm:flex-col items-center  justify-between bg-[#303030] !p-4 rounded-xl">
+            <div className="flex lg:flex-row sm:flex-col relative top-20 items-center  justify-between bg-[#303030] !p-4 rounded-xl">
               <div className="flex items-center">
                 <img
                   src={t.image}

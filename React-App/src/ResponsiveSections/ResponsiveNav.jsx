@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import gsap from 'gsap';
 import { CSSRulePlugin } from 'gsap/all';
 import { NavBarStatusContext } from '../Contexts/NavBarStatus'
@@ -10,6 +10,7 @@ gsap.registerPlugin(CSSRulePlugin);
 
 export default function ResponsiveNav() {
   const { isOpen, setIsOpen } = useContext(NavBarStatusContext)
+  const navigate = useNavigate();
   const tl = useRef(null) // نخزن الـ timeline هنا
 
   const NavItems = [
@@ -26,7 +27,7 @@ export default function ResponsiveNav() {
     tl.current = gsap.timeline({ paused: true });
 
     tl.current.to('.overlay', {
-      duration: 1.5,
+      duration: 1.2,
       clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0% 100%)',
       ease: 'power4.inOut'
     });
@@ -39,10 +40,10 @@ export default function ResponsiveNav() {
     }, '-=1');
 
     tl.current.to(activeItem, {
-      duration: 2.9,
+      duration: 2.1,
       width: '100%',
       ease: 'power4.out',
-      delay: 1.8,
+      delay: 1.2,
 
     }, '<');
 
@@ -58,15 +59,24 @@ export default function ResponsiveNav() {
   }
 }, [isOpen]);
 
-  const handleClose = () => {
-    setIsOpen(false);
+  
+
+  const handleNavClick = (path) => {
+  if (tl.current) {
+    tl.current.reverse().eventCallback("onReverseComplete", () => {
+      setIsOpen(false);
+      navigate(path);
+    });
+  } else {
+    navigate(path);
   }
+};
 
   return (
     <section className="h-screen transition-all duration-600 ease-out lg:hidden overlay flex justify-center fixed z-50 w-full bg-[#141414]">
   {/* X Icon */}
   <div className="absolute top-5 right-5 text-lime-400 cursor-pointer text-3xl">
-    <FontAwesomeIcon icon={faXmark} onClick={handleClose} />
+    <FontAwesomeIcon icon={faXmark} onClick={() => handleNavClick(item.path)} />
   </div>
 
   <div className='menu flex flex-col justify-center items-center w-full'>
@@ -75,8 +85,8 @@ export default function ResponsiveNav() {
         <div className='menu-item !p-1 cursor-pointer overflow-hidden' key={index}>
           <Link
             className='text-amber-50 font-barlow ll hover:text-lime-400  hover:tracking-wider lg:text-9xl md:text-8xl sm:text-7xl block'
-            to={item.path}
-            onClick={handleClose}
+            
+            onClick={() => handleNavClick(item.path)}
           >
             {item.name}
           </Link>

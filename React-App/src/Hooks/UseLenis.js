@@ -8,11 +8,11 @@ gsap.registerPlugin(ScrollTrigger);
 export default function useLenis() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // easing لطيف
-      smoothWheel: true,
-      smoothTouch: false,
-    });
+  duration: 0.6, 
+  easing: (t) => t, 
+  smoothWheel: true,
+  smoothTouch: true, 
+});
 
     function raf(time) {
       lenis.raf(time);
