@@ -32,12 +32,12 @@ function Intro({ onFinish }) {
     );
 
     
-    tl.to({}, { duration: 2.9 });
+    tl.to({}, { duration: 0.4 });
 
     
     tl.to(maskRef.current, {
       attr: { r: 0 },
-      duration: 1.2,
+      duration: 1,
       ease: "power4.inOut",
     });
   }, [onFinish]);
