@@ -18,7 +18,7 @@ function StartProjectSection() {
             </p>
          </div>
         </div>
-         <section className='flex gap-4 items-center'>
+         <section className='lg:flex-row flex-col flex gap-4 items-center'>
               <p className='opacity-25'>
                 Welcome to SquareUp
               </p>

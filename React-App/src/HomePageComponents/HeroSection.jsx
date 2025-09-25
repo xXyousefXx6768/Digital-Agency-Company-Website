@@ -43,9 +43,15 @@ function HeroSection() {
 
   return (
     <section className=" relative bg-dark-grid min-h-screen w-full text-white flex items-center justify-center !px-4">
-      <div className="absolute   bottom-0 w-ful h-[80%] z-0 overflow-hidden pointer-events-none">
-    <img src={AbstractDesign} ref={svgRef} alt="" className="w-full h-full  object-cover" />
-         </div>
+      <div className="absolute bottom-0 w-full h-[80%] z-0 overflow-hidden pointer-events-none">
+  <img 
+    src={AbstractDesign} 
+    ref={svgRef} 
+    alt="" 
+    className="absolute inset-0 w-full h-full object-cover "
+  />
+</div>
+
       <div className=" relative text-center">
         <h1 ref={textRef} className="text-4xl overflow-hidden inline-block z-10 md:text-6xl font-bold">
           A Digital Product Studio<br />that will Work

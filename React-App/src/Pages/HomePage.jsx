@@ -1,12 +1,13 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import HeroSection from '../HomePageComponents/HeroSection';
 import OurServicesSection from '../HomePageComponents/OurServicesSection';
 import WhyChooseUsSection from '../HomePageComponents/WhyChooseUsSection';
 import TestimonialsSection from '../HomePageComponents/TestimonialsSection';
 import FAQSection from '../HomePageComponents/FAQSection';
 import ContactSection from '../HomePageComponents/ContactSection';
+import Intro from '../Sections/IntroSection';
 
-// Loader بسيط كـ fallback
+
 function Loader() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-black">
@@ -18,16 +19,29 @@ function Loader() {
 }
 
 function HomePage() {
+  const [introDone, setIntroDone] = useState(false);
+
+  useEffect(() => {
+    // كل مرة تعمل reload يظهر الانترو
+    setIntroDone(false);
+  }, []);
+
   return (
     <section className="flex flex-col font-barlow justify-center items-center">
-      <Suspense fallback={<Loader />}>
-        <HeroSection />
-      </Suspense>
-      <OurServicesSection />
-      <WhyChooseUsSection />
-      <TestimonialsSection />
-      <FAQSection />
-      <ContactSection />
+      {!introDone && <Intro onFinish={() => setIntroDone(true)} />}
+
+      {introDone && (
+        <>
+          <Suspense fallback={<Loader />}>
+            <HeroSection />
+          </Suspense>
+          <OurServicesSection />
+          <WhyChooseUsSection />
+          <TestimonialsSection />
+          <FAQSection />
+          <ContactSection />
+        </>
+      )}
     </section>
   );
 }
