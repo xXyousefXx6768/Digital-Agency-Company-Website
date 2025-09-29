@@ -6,7 +6,7 @@ import LinkedinIcon from './assets/Icons/LinkedinIcon'
 import MapMarkerIcon from './assets/Icons/MapMarkerIcon'
 import PhoneAltIcon from './assets/Icons/PhoneAltIcon'
 import MdEmail from './assets/Icons/MdEmailIcon'
-import logo from './assets/logo.png'
+import logo from './assets/Logo.png'
 function Footer() {
   
   const Items=[
