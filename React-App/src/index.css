@@ -61,5 +61,25 @@
   transform: translateY(-50%);
   background-color: #9EFF00;
   width: 0;
-  height: 2px;
+  height: 8px;
 }
+
+/* Scrollbar Style */
+::-webkit-scrollbar {
+  
+  width: 5px;            
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;       /* الخلفية السوداء */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7DFF00;       /* الأخضر المستخدم في موقعك */
+  border-radius: 10px;       /* شكل ناعم */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6ae400;       /* لون أغمق شوية عند الهُوفر */
+}
+
