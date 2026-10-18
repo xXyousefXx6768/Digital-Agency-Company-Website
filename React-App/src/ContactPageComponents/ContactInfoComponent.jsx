@@ -26,15 +26,15 @@ function ContactInfoComponent() {
 
   const SocialIcons =[
       {
-          
+
           icon:<FacebookIcon />
       },
       {
-          
+
           icon:<TwitterIcon />
       },
       {
-          
+
           icon:<LinkedinIcon />
       }
 
@@ -46,7 +46,7 @@ function ContactInfoComponent() {
         contactInfo.map((item,index) => {
           return (
             <div className='flex  bg-[#262626] !p-4  rounded-[7px] items-center' key={index}>
-              <FontAwesomeIcon icon={item.icon} className='w-7 h-7 text-2xl text-[#9EFF00]' />  
+              <FontAwesomeIcon icon={item.icon} className='w-7 h-7 text-2xl text-[#9EFF00]' />
               <p>{item.text}</p>
             </div>
           )
@@ -55,7 +55,7 @@ function ContactInfoComponent() {
        <Form/>
         </div>
         <div className='flex flex-wrap  items-center   justify-evenly'>
-           
+
                 <div className='flex items-center    !p-6 rounded-2xl !border border-[#4f4e4e]  '>
                   <p>
                     Operating Days
@@ -69,14 +69,14 @@ function ContactInfoComponent() {
           <span className="font-semibold text-sm">Stay Connected</span>
           <div className="flex  gap-3">
             {SocialIcons.map((icon, index) => (
-                 <div 
-             className="relative rounded-[7px] w-[58px] 
+                 <div
+             className="relative rounded-[7px] w-[58px]
              h-[58px] !p-4 overflow-hidden  icon-2 bg-[#1e1e1e]">
-                <div 
-            className="absolute inset-0 bg-gradient-to-b 
+                <div
+            className="absolute inset-0 bg-gradient-to-b
            from-[#83857f] to-transparent opacity-16 z-0">
                 </div>
-              <Link key={index} to={'#'} 
+              <Link key={index} to={'#'}
               className="hover:text-lime-400">
                 {icon.icon}
               </Link>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -19,65 +19,133 @@ gsap.registerPlugin(ScrollTrigger);
 function OurServicesSection() {
   const sectionRef = useRef(null);
 
-  useEffect(() => {
+useLayoutEffect(() => {
   const ctx = gsap.context(() => {
+    const cards = gsap.utils.toArray(".service-card");
     const mm = gsap.matchMedia();
 
     mm.add(
       {
-        isDesktop: "(min-width: 763px)",
-        isMobile: "(max-width: 762px)",
+        desktop: "(min-width: 763px)",
+        mobile: "(max-width: 762px)",
+        motion: "(prefers-reduced-motion: no-preference)",
       },
       (context) => {
-        const cards = gsap.utils.toArray(".service-card");
-        const { isDesktop, isMobile } = context.conditions;
+        const { desktop, motion } = context.conditions;
 
-        // تجهيز الكروت
-        gsap.set(cards, {
-          opacity: 0,
-          y: isDesktop ? 40 : 60,
-        });
+        // احترام إعداد تقليل الحركة
+        if (!motion) return;
 
-        if (isDesktop) {
-          // كل الكروت مرة واحدة مع stagger
-          gsap.to(cards, {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: "power2.out",
-            stagger: 0.25,
+        cards.forEach((card, index) => {
+          const line = card.querySelector(".service-line");
+          const icon = card.querySelector(".service-icon");
+          const title = card.querySelector(".service-title");
+          const desc = card.querySelector(".service-desc");
+          const button = card.querySelector(".service-button");
+
+          gsap.set(card, {
+            opacity: 0,
+            y: desktop ? 55 : 35,
+            scale: 0.97,
+          });
+
+          gsap.set(line, {
+            scaleX: 0,
+            transformOrigin: "left center",
+          });
+
+          gsap.set(icon, {
+            opacity: 0,
+            scale: 0.6,
+            rotation: -12,
+          });
+
+          gsap.set(title, {
+            opacity: 0,
+            y: 18,
+          });
+
+          gsap.set(desc, {
+            opacity: 0,
+            y: 20,
+            clipPath: "inset(0 0 100% 0)",
+          });
+
+          gsap.set(button, {
+            opacity: 0,
+            y: 15,
+          });
+
+          const tl = gsap.timeline({
             scrollTrigger: {
               trigger: sectionRef.current,
-              start: "top 80%",
+              start: desktop ? "top 78%" : "top 88%",
               toggleActions: "play none none none",
+              once: true,
               invalidateOnRefresh: true,
-              // markers: true,
             },
+            delay: index * (desktop ? 0.18 : 0.12),
           });
-        }
 
-        if (isMobile) {
-          // كل كارت لوحده
-          cards.forEach((card) => {
-            gsap.to(card, {
-              y: 0,
-              opacity: 1,
-              duration: 1,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: card,
-                start: "top center",
-                toggleActions: "play none none none",
-                invalidateOnRefresh: true,
-                // markers: true,
+          tl.to(card, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.7,
+            ease: "power3.out",
+          })
+            .to(
+              line,
+              {
+                scaleX: 1,
+                duration: 0.55,
+                ease: "power3.out",
               },
-            });
-          });
-        }
-
-        return () => {
-          ScrollTrigger.getAll().forEach((t) => t.kill());
-        };
+              "-=0.45"
+            )
+            .to(
+              icon,
+              {
+                opacity: 1,
+                scale: 1,
+                rotation: 0,
+                duration: 0.55,
+                ease: "back.out(1.7)",
+              },
+              "-=0.3"
+            )
+            .to(
+              title,
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.45,
+                ease: "power3.out",
+              },
+              "-=0.3"
+            )
+            .to(
+              desc,
+              {
+                opacity: 1,
+                y: 0,
+                clipPath: "inset(0 0 0% 0)",
+                duration: 0.65,
+                ease: "power2.out",
+              },
+              "-=0.2"
+            )
+            .to(
+              button,
+              {
+                opacity: 1,
+                y: 0,
+                duration: 0.45,
+                ease: "power2.out",
+              },
+              "-=0.25"
+            );
+        }); // ← دي كانت ناقصة عندك
       }
     );
   }, sectionRef);
@@ -117,9 +185,9 @@ function OurServicesSection() {
   ];
 
   return (
-    <div className="w-full !py-12 relative bg-[#1e1e1e95] overflow-hidden">
-      <section className="flex flex-col justify-center items-center gap-8">
-        <button className="text-[14px] font-barlow !py-2 !px-6 !rounded-2xl bg-[#262626] text-white shadow-md">
+    <div className="w-full pt-0 pb-12 relative bg-[#1e1e1e95] overflow-hidden">
+      <section className="flex flex-col justify-center items-center  gap-8">
+        <button className="relative  text-[14px] font-barlow py-2 px-6  !rounded-2xl bg-[#262626] text-white shadow-md">
           Trusted By 250+ Companies
         </button>
 
@@ -137,7 +205,7 @@ function OurServicesSection() {
               background: "linear-gradient(to left, rgb(18 18 18), transparent)",
             }}
           />
-          <div className="flex animate-[scroll_10s_linear_infinite] whitespace-nowrap gap-12">
+          <div className="flex w-max animate-[scroll_28s_linear_infinite] whitespace-nowrap gap-12">
             {[...infiniteScrollItems, ...infiniteScrollItems].map(
               (item, index) => (
                 <img
@@ -156,6 +224,7 @@ function OurServicesSection() {
           image={continerBg}
           title="Our Services"
           Desc="Transform your brand with our innovative digital solutions that captivate and engage your audience."
+          animation="services"
         />
 
         <div
@@ -164,27 +233,31 @@ function OurServicesSection() {
         >
           {ServicesItems.map((service, idx) => (
             <div
-              key={idx}
-              className="bg-[#1e1e1e95] h-[524px] !p-6 text-left shadow-lg flex flex-col justify-evenly service-card"
-            >
-              <div className="relative rounded-xl w-[58px] h-[58px] !p-4 overflow-hidden icon bg-[#1e1e1e]">
+  key={idx}
+  className="relative overflow-hidden bg-[#1e1e1e95] h-[450px] !p-6 text-left shadow-lg flex flex-col justify-around service-card"
+>
+              <div className="relative rounded-xl w-[68px] h-[68px] !p-4 overflow-hidden icon service-icon bg-[#1e1e1e]">
+                <div className="service-line absolute left-0 top-0 w-full h-px bg-lime-400/70" />
                 <div className="absolute inset-0 bg-gradient-to-b from-[#9eff00] to-transparent opacity-10 z-0" />
                 <img
                   loading="lazy"
                   src={service.icon}
                   alt={service.title}
-                  className="h-6 w-6 object-contain"
+                  className="h-10 w-10 object-contain"
                 />
+
               </div>
 
-              <h3 className="text-xl font-semibold title">{service.title}</h3>
-              <div className="desc">
-                <p className="text-gray-400 h-[135px] text-sm">
+            <h3 className="text-2xl font-semibold title service-title">
+  {service.title}
+</h3>
+              <div className="desc ">
+                <p className="text-white h-[135px] text-sm service-desc">
                   {service.description}
                 </p>
               </div>
               <div className="btn">
-                <button className="btn bg-[#262626] w-full !px-6 !py-2 text-white text-sm rounded-lg hover:bg-[#ACFF24] hover:text-black transition">
+                <button className="btn service-button bg-[#262626] w-full !px-6 !py-4 text-white text-sm rounded-lg hover:bg-[#ACFF24] hover:text-black transition">
                   Learn More
                 </button>
               </div>

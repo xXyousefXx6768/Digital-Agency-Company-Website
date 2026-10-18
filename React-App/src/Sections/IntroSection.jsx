@@ -1,4 +1,3 @@
-// IntroSection.jsx
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import Logo from "../assets/Abstract Design.png";
@@ -9,37 +8,98 @@ function Intro({ onFinish }) {
   const maskRef = useRef(null);
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      defaults: { ease: "power3.out" },
-      onComplete: () => {
-        onFinish();
-      },
-    });
+    let isMounted = true;
 
-    
-    tl.fromTo(
-      logoRef.current,
-      { scale: 0, opacity: 0 },
-      { scale: 1.2, opacity: 1, duration: 0.6, ease: "back.out(2)" }
-    ).to(logoRef.current, { scale: 1, duration: 0.8, delay: 0.7 }, "-=0.6");
+    const preloadImage = () => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
 
-    
-    tl.fromTo(
-      textRef.current,
-      { x: 0, opacity: 0, clipPath: "inset(0 100% 0 0)" },
-      { x: 10, opacity: 1, clipPath: "inset(0 0% 0 0)", duration: 1 },
-      "-=0.1"
-    );
+        img.src = Logo;
 
-    
-    tl.to({}, { duration: 0.4 });
+        img.onload = resolve;
+        img.onerror = reject;
+      });
+    };
 
-    
-    tl.to(maskRef.current, {
-      attr: { r: 0 },
-      duration: 1,
-      ease: "power4.inOut",
-    });
+    const startIntro = async () => {
+      try {
+        // Make sure the image is loaded before the intro finishes
+        await preloadImage();
+
+        if (!isMounted) return;
+
+        const tl = gsap.timeline({
+          defaults: {
+            ease: "power3.out",
+          },
+          onComplete: () => {
+            onFinish();
+          },
+        });
+
+        tl.fromTo(
+          logoRef.current,
+          {
+            scale: 0,
+            opacity: 0,
+          },
+          {
+            scale: 1.2,
+            opacity: 1,
+            duration: 0.6,
+            ease: "back.out(1.7)",
+          }
+        );
+
+        tl.to(
+          logoRef.current,
+          {
+            scale: 1,
+            duration: 0.8,
+          },
+          "-=0.25"
+        );
+
+        tl.fromTo(
+          textRef.current,
+          {
+            x: 0,
+            opacity: 0,
+            clipPath: "inset(0 100% 0 0)",
+          },
+          {
+            x: 10,
+            opacity: 1,
+            clipPath: "inset(0 0% 0 0)",
+            duration: 1,
+            ease: "power3.out",
+          },
+          "-=0.1"
+        );
+
+        tl.to({}, { duration: 0.4 });
+
+        tl.to(maskRef.current, {
+          attr: {
+            r: 0,
+          },
+          duration: 1,
+          ease: "power4.inOut",
+        });
+      } catch (error) {
+        console.error("Failed to preload image:", error);
+
+        if (isMounted) {
+          onFinish();
+        }
+      }
+    };
+
+    startIntro();
+
+    return () => {
+      isMounted = false;
+    };
   }, [onFinish]);
 
   return (
@@ -47,22 +107,45 @@ function Intro({ onFinish }) {
       <svg className="absolute inset-0 w-full h-full">
         <defs>
           <mask id="revealMask">
-            <rect width="100%" height="100%" fill="black" />
-            
-            <circle ref={maskRef} cx="50%" cy="50%" r="1000" fill="white" />
+            <rect
+              width="100%"
+              height="100%"
+              fill="black"
+            />
+
+            <circle
+              ref={maskRef}
+              cx="50%"
+              cy="50%"
+              r="1000"
+              fill="white"
+            />
           </mask>
         </defs>
 
-        
         <g mask="url(#revealMask)">
-          <rect width="100%" height="100%" fill="black" />
-          <foreignObject x="0" y="0" width="100%" height="100%">
+          <rect
+            width="100%"
+            height="100%"
+            fill="black"
+          />
+
+          <foreignObject
+            x="0"
+            y="0"
+            width="100%"
+            height="100%"
+          >
             <div className="w-full h-full flex items-center justify-center">
               <div
                 ref={logoRef}
-                className=" bg-lime-400  flex items-center justify-center shadow-lg overflow-hidden relative"
+                className="bg-lime-400 flex items-center justify-center shadow-lg overflow-hidden relative"
               >
-                <img src={Logo} alt="Logo" className="w-16 h-16 z-10" />
+                <img
+                  src={Logo}
+                  alt="Logo"
+                  className="w-16 h-16 z-10"
+                />
               </div>
 
               <h1
